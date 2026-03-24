@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicolas Mir — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #080c10;
+      --surface:   #0d1318;
+      --panel:     #111820;
+      --border:    #1e2d3d;
+      --accent:    #2f80ed;
+      --accent2:   #56ccf2;
+      --text:      #c9d8e8;
+      --muted:     #4a6278;
+      --heading:   #e8f0f8;
+      --mono:      'Share Tech Mono', monospace;
+      --sans:      'Syne', sans-serif;
+      --glow:      0 0 20px rgba(47,128,237,0.35);
+      --glow-sm:   0 0 8px rgba(47,128,237,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(47,128,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47,128,237,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      color: var(--accent2);
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--accent2); }
+    nav a:hover::after { width: 100%; }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 7rem 2rem 4rem;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before { content: '// '; color: var(--muted); }
+
+    h1, h2, h3 { font-family: var(--sans); color: var(--heading); font-weight: 800; }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8rem;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--heading);
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+    .hero-name .accent { color: var(--accent); }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--accent2);
+      margin: 1.2rem 0 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.6s forwards;
+    }
+
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 1s forwards;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--glow); }
+    .btn-primary:hover { background: var(--accent2); box-shadow: 0 0 30px rgba(86,204,242,0.5); }
+    .btn-outline { background: transparent; color: var(--accent2); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── MUSIC PLAYER ─── */
+    .music-player {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(8, 12, 16, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.6s 1.4s forwards;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .music-player:hover {
+      border-color: var(--accent);
+      box-shadow: var(--glow-sm);
+    }
+
+    /* Play/Pause button */
+    .mp-play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--accent2);
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+    }
+    .mp-play-btn:hover { background: rgba(47,128,237,0.12); color: #fff; }
+
+    /* Track info */
+    .mp-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0.9rem;
+      min-width: 130px;
+    }
+    .mp-track {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--heading);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+    .mp-status {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .mp-status-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background 0.3s;
+    }
+    .mp-status-dot.playing {
+      background: var(--accent2);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    /* Volume section */
+    .mp-volume {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 0.8rem 0 0;
+      border-left: 1px solid var(--border);
+    }
+
+    /* Mute button */
+    .mp-mute-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 44px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .mp-mute-btn:hover { color: var(--accent2); }
+    .mp-mute-btn.muted { color: var(--accent); }
+
+    /* Volume slider */
+    .mp-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 72px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+    }
+    .mp-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent2);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 0 6px rgba(86,204,242,0.5);
+    }
+    .mp-slider::-webkit-slider-thumb:hover {
+      background: #fff;
+      transform: scale(1.2);
+    }
+    .mp-slider::-moz-range-thumb {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent2);
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Waveform bars animation */
+    .mp-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 16px;
+      padding: 0 0.6rem;
+      border-right: 1px solid var(--border);
+    }
+    .mp-bar {
+      width: 3px;
+      background: var(--accent);
+      border-radius: 1px;
+      transform-origin: bottom;
+      transition: background 0.3s;
+    }
+    .mp-bar:nth-child(1) { height: 40%; animation: none; }
+    .mp-bar:nth-child(2) { height: 70%; animation: none; }
+    .mp-bar:nth-child(3) { height: 55%; animation: none; }
+    .mp-bar:nth-child(4) { height: 90%; animation: none; }
+    .mp-bar:nth-child(5) { height: 40%; animation: none; }
+
+    .mp-bars.animating .mp-bar { background: var(--accent2); }
+    .mp-bars.animating .mp-bar:nth-child(1) { animation: bar1 0.8s ease-in-out infinite alternate; }
+    .mp-bars.animating .mp-bar:nth-child(2) { animation: bar2 0.65s ease-in-out infinite alternate; }
+    .mp-bars.animating .mp-bar:nth-child(3) { animation: bar3 0.9s ease-in-out infinite alternate; }
+    .mp-bars.animating .mp-bar:nth-child(4) { animation: bar4 0.7s ease-in-out infinite alternate; }
+    .mp-bars.animating .mp-bar:nth-child(5) { animation: bar5 0.85s ease-in-out infinite alternate; }
+
+    @keyframes bar1 { from { height: 20% } to { height: 80% } }
+    @keyframes bar2 { from { height: 50% } to { height: 100% } }
+    @keyframes bar3 { from { height: 30% } to { height: 70% } }
+    @keyframes bar4 { from { height: 60% } to { height: 95% } }
+    @keyframes bar5 { from { height: 25% } to { height: 65% } }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+    .about-text p { color: var(--text); margin-bottom: 1rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+    }
+    .stat-card .number { font-size: 2rem; font-weight: 800; color: var(--accent2); font-family: var(--mono); }
+    .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ─── SKILLS ─── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .skill-category {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .skill-category:hover { border-color: var(--accent); box-shadow: var(--glow-sm); }
+    .skill-category h3 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text);
+      background: rgba(47,128,237,0.08);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .tag:hover { background: rgba(47,128,237,0.2); border-color: var(--accent); }
+
+    /* ─── PROJECTS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-number { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .project-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+    .project-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .project-links { display: flex; gap: 1rem; }
+    .project-links a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .project-links a:hover { color: #fff; }
+
+    /* ─── DOC CARDS ─── */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .doc-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .doc-card:hover { border-color: var(--accent); box-shadow: var(--glow-sm); }
+    .doc-icon { font-size: 1.8rem; line-height: 1; }
+    .doc-card h3 { font-size: 1rem; color: var(--heading); }
+    .doc-card p { font-size: 0.85rem; color: var(--muted); }
+    .doc-action { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); margin-top: auto; }
+
+    .cert-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cert-item {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 2px;
+    }
+    .cert-item .cert-name { color: var(--heading); font-weight: 600; font-size: 0.95rem; }
+    .cert-item .cert-issuer { color: var(--muted); font-size: 0.8rem; font-family: var(--mono); margin-top: 0.2rem; }
+    .cert-item .cert-year { font-family: var(--mono); color: var(--accent); font-size: 0.8rem; }
+
+    /* ─── CONTACT ─── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 2.5rem;
+      align-items: start;
+    }
+    .contact-info p { color: var(--muted); margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent2); }
+    .contact-link span { color: var(--muted); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      padding: 0.8rem 1rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); box-shadow: var(--glow-sm); }
+    .form-group textarea { min-height: 120px; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.2rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      section { padding: 6rem 1.5rem 3rem; }
+      .music-player { bottom: 1rem; right: 1rem; }
+      .mp-info { min-width: 100px; }
+      .mp-slider { width: 55px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AUDIO ELEMENT -->
+  <!-- Replace 'your-music.mp3' with the path to your actual audio file -->
+  <audio id="bgAudio" loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+    <source src="your-music.ogg" type="audio/ogg">
+  </audio>
+
+  <!-- ─── MUSIC PLAYER ─── -->
+  <div class="music-player" id="musicPlayer" aria-label="Background music controls">
+
+    <!-- Play / Pause -->
+    <button class="mp-play-btn" id="playBtn" title="Play / Pause" aria-label="Play or pause background music">
+      <svg id="playIcon" width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+        <path d="M2 1.5l10 6.5-10 6.5V1.5z"/>
+      </svg>
+      <svg id="pauseIcon" width="12" height="16" viewBox="0 0 12 16" fill="currentColor" style="display:none">
+        <rect x="0" y="0" width="4" height="16" rx="1"/>
+        <rect x="8" y="0" width="4" height="16" rx="1"/>
+      </svg>
+    </button>
+
+    <!-- Waveform bars -->
+    <div class="mp-bars" id="mpBars">
+      <div class="mp-bar"></div>
+      <div class="mp-bar"></div>
+      <div class="mp-bar"></div>
+      <div class="mp-bar"></div>
+      <div class="mp-bar"></div>
+    </div>
+
+    <!-- Track info -->
+    <div class="mp-info">
+      <div class="mp-track" id="mpTrack">Ambient Mix</div>
+      <div class="mp-status">
+        <div class="mp-status-dot" id="statusDot"></div>
+        <span id="statusText">paused</span>
+      </div>
+    </div>
+
+    <!-- Volume section -->
+    <div class="mp-volume">
+      <!-- Mute button -->
+      <button class="mp-mute-btn" id="muteBtn" title="Mute / Unmute" aria-label="Mute or unmute music">
+        <!-- Volume icon (unmuted) -->
+        <svg id="volumeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <!-- Muted icon -->
+        <svg id="muteIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+
+      <!-- Volume slider -->
+      <input type="range" class="mp-slider" id="volumeSlider"
+             min="0" max="100" value="40"
+             title="Volume" aria-label="Volume control">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#home"><span>&lt;</span>Nicolas Mir<span>/&gt;</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#dissertation">Dissertation</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <p class="hero-tag">[ PORTFOLIO ]</p>
+    <h1 class="hero-name">Nicolas<br>Mir<span class="accent">.</span></h1>
+    <p class="hero-title">// Data Science Graduate &amp; Software Engineer</p>
+    <p class="hero-desc">Welcome to my portfolio. This is a growing collection of my work, which I will continue to expand and improve over time.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade-in">About</p>
+    <h2 class="section-heading fade-in">Who I Am</h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>I am a curious French graduate who came to New Zealand to complete a Master of Data Science at the University of Auckland.</p>
+        <p>With a background in software engineering, I am now focused on developing my expertise in what drives me: Machine Learning and Artificial Intelligence.</p>
+        <a href="#cv" class="btn btn-outline" style="margin-top:1rem; display:inline-block;">View Full CV</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="number">XX</div>
+          <div class="label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">2</div>
+          <div class="label">Publications</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">0</div>
+          <div class="label">Certificates</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">&lt;2</div>
+          <div class="label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label fade-in">Skills</p>
+    <h2 class="section-heading fade-in">What I Work With</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-category">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">JavaScript</span>
+          <span class="tag">SQL</span><span class="tag">C</span><span class="tag">Java</span>
+          <span class="tag">Bash</span><span class="tag">C++</span><span class="tag">Ocaml</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Frameworks &amp; Tools</h3>
+        <div class="skill-tags">
+          <span class="tag">Spark</span><span class="tag">Hadoop</span>
+          <span class="tag">Git</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Machine Learning</h3>
+        <div class="skill-tags">
+          <span class="tag">regression</span><span class="tag">MoE</span><span class="tag">SVMs</span>
+          <span class="tag">trees</span><span class="tag">clustering</span>
+          <span class="tag">ensembles</span><span class="tag">neural networks</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Other</h3>
+        <div class="skill-tags">
+          <span class="tag">Attention to detail</span><span class="tag">Curious</span>
+          <span class="tag">Hard working</span><span class="tag">Innovative</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label fade-in">Projects</p>
+    <h2 class="section-heading fade-in">What I've Built</h2>
+    <div class="projects-grid fade-in">
+      <div class="project-card">
+        <div class="project-number">01</div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project does, what problem it solves, and what technologies you used.</p>
+        <div class="skill-tags" style="margin-bottom:1rem">
+          <span class="tag">Python</span><span class="tag">React</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ Live Demo</a>
+          <a href="#">→ GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">02</div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project does, what problem it solves, and what technologies you used.</p>
+        <div class="skill-tags" style="margin-bottom:1rem">
+          <span class="tag">R</span><span class="tag">SQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ Live Demo</a>
+          <a href="#">→ GitHub</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-number">03</div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project does, what problem it solves, and what technologies you used.</p>
+        <div class="skill-tags" style="margin-bottom:1rem">
+          <span class="tag">JavaScript</span><span class="tag">Node.js</span>
+        </div>
+        <div class="project-links">
+          <a href="#">→ Live Demo</a>
+          <a href="#">→ GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CV -->
+  <section id="cv">
+    <p class="section-label fade-in">CV</p>
+    <h2 class="section-heading fade-in">Curriculum Vitae</h2>
+    <div class="doc-grid fade-in">
+      <a href="cv.pdf" class="doc-card">
+        <div class="doc-icon">📄</div>
+        <h3>Full CV</h3>
+        <p>Academic and professional experience, education, publications, and awards.</p>
+        <span class="doc-action">↓ Download PDF</span>
+      </a>
+      <a href="resume.pdf" class="doc-card">
+        <div class="doc-icon">📋</div>
+        <h3>Résumé (1-page)</h3>
+        <p>Condensed one-page version for industry applications.</p>
+        <span class="doc-action">↓ Download PDF</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DISSERTATION -->
+  <section id="dissertation">
+    <p class="section-label fade-in">Dissertation</p>
+    <h2 class="section-heading fade-in">Research</h2>
+    <div class="doc-grid fade-in">
+      <a href="dissertation.pdf" class="doc-card">
+        <div class="doc-icon">🎓</div>
+        <h3>Dissertation Title</h3>
+        <p>Replace this with a brief abstract or description of your dissertation's topic, methodology, and key findings.</p>
+        <span class="doc-action">↓ Read Full Dissertation</span>
+      </a>
+      <div class="doc-card" style="cursor:default">
+        <div class="doc-icon">🔬</div>
+        <h3>Research Highlights</h3>
+        <p>Supervised by Patrice Delmas, Joseph Ashby and Nicholas Rattenbury · The University of Auckland · 2025</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem;">Keywords: keyword1 · keyword2 · keyword3</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <p class="section-label fade-in">Certificates</p>
+    <h2 class="section-heading fade-in">Credentials</h2>
+    <div class="cert-list fade-in">
+      <div class="cert-item">
+        <div><div class="cert-name">Certificate Name</div><div class="cert-issuer">Issuing Organisation</div></div>
+        <div class="cert-year">2024</div>
+      </div>
+      <div class="cert-item">
+        <div><div class="cert-name">Certificate Name</div><div class="cert-issuer">Issuing Organisation</div></div>
+        <div class="cert-year">2023</div>
+      </div>
+      <div class="cert-item">
+        <div><div class="cert-name">Certificate Name</div><div class="cert-issuer">Issuing Organisation</div></div>
+        <div class="cert-year">2023</div>
+      </div>
+      <div class="cert-item">
+        <div><div class="cert-name">Certificate Name</div><div class="cert-issuer">Issuing Organisation</div></div>
+        <div class="cert-year">2022</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label fade-in">Contact</p>
+    <h2 class="section-heading fade-in">Get in Touch</h2>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <p>Feel free to reach out about research collaborations, job opportunities, or just to say hello.</p>
+        <div class="contact-links">
+          <a href="mailto:nicolasmir20@gmail.com" class="contact-link">
+            <span>✉</span> nicolasmir20@gmail.com
+          </a>
+          <a href="https://github.com/rakmanimal-theai" class="contact-link" target="_blank">
+            <span>⌥</span> github.com/rakmanimal-theai
+          </a>
+          <a href="https://linkedin.com/in/nicolas-mir12" class="contact-link" target="_blank">
+            <span>◈</span> linkedin.com/in/nicolas-mir12/
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="return false">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your-email@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built with HTML &amp; CSS · Hosted on <a href="https://pages.github.com">GitHub Pages</a></p>
+    <p style="margin-top:0.5rem;">© <span id="year"></span> Nicolas Mir</p>
+  </footer>
+
+  <script>
+    // ─── Year ───
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ─── Scroll fade-in ───
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ─── Music Player ───
+    const audio        = document.getElementById('bgAudio');
+    const playBtn      = document.getElementById('playBtn');
+    const playIcon     = document.getElementById('playIcon');
+    const pauseIcon    = document.getElementById('pauseIcon');
+    const muteBtn      = document.getElementById('muteBtn');
+    const volumeIcon   = document.getElementById('volumeIcon');
+    const muteIcon     = document.getElementById('muteIcon');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const statusDot    = document.getElementById('statusDot');
+    const statusText   = document.getElementById('statusText');
+    const mpBars       = document.getElementById('mpBars');
+
+    // Set initial volume (40%)
+    audio.volume = 0.4;
+
+    let isPlaying = false;
+    let isMuted   = false;
+    let lastVol   = 0.4;
+
+    function setPlaying(state) {
+      isPlaying = state;
+      if (state) {
+        playIcon.style.display  = 'none';
+        pauseIcon.style.display = '';
+        statusDot.classList.add('playing');
+        statusText.textContent  = 'playing';
+        mpBars.classList.add('animating');
+      } else {
+        playIcon.style.display  = '';
+        pauseIcon.style.display = 'none';
+        statusDot.classList.remove('playing');
+        statusText.textContent  = 'paused';
+        mpBars.classList.remove('animating');
+      }
+    }
+
+    function setMuted(state) {
+      isMuted = state;
+      audio.muted = state;
+      if (state) {
+        volumeIcon.style.display = 'none';
+        muteIcon.style.display   = '';
+        muteBtn.classList.add('muted');
+        volumeSlider.value = 0;
+      } else {
+        volumeIcon.style.display = '';
+        muteIcon.style.display   = 'none';
+        muteBtn.classList.remove('muted');
+        volumeSlider.value = Math.round(lastVol * 100);
+      }
+    }
+
+    // Play / Pause toggle
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        audio.play().then(() => {
+          setPlaying(true);
+        }).catch(err => {
+          // Autoplay policy may block — user gesture required (which this is)
+          console.warn('Audio play error:', err);
+        });
+      }
+    });
+
+    // Mute toggle
+    muteBtn.addEventListener('click', () => {
+      if (!isMuted) {
+        lastVol = audio.volume;
+        setMuted(true);
+      } else {
+        setMuted(false);
+        audio.volume = lastVol;
+      }
+    });
+
+    // Volume slider
+    volumeSlider.addEventListener('input', () => {
+      const val = volumeSlider.value / 100;
+      audio.volume = val;
+      lastVol = val;
+      if (val === 0) {
+        isMuted = true;
+        audio.muted = true;
+        volumeIcon.style.display = 'none';
+        muteIcon.style.display   = '';
+        muteBtn.classList.add('muted');
+      } else {
+        isMuted = false;
+        audio.muted = false;
+        volumeIcon.style.display = '';
+        muteIcon.style.display   = 'none';
+        muteBtn.classList.remove('muted');
+      }
+    });
+
+    // Sync state if audio ends (non-loop scenario)
+    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener('pause',  () => setPlaying(false));
+    audio.addEventListener('play',   () => setPlaying(true));
+  </script>
+
+</body>
+</html>
