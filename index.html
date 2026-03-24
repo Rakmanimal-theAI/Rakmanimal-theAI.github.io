@@ -563,7 +563,7 @@ async function runSentiment() {
   sentResult.classList.remove('show');
 
   try {
-    const res  = await fetch('https://api.anthropic.com/v1/messages', {
+    const res  = await fetch('https://fancy-union-6b97.nicolasmir20.workers.dev/', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
