@@ -565,7 +565,7 @@ async function runSentiment() {
   try {
     const res  = await fetch('https://fancy-union-6b97.nicolasmir20.workers.dev/', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
