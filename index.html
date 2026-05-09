@@ -270,7 +270,7 @@
         <div class="stat-card"><div class="number">5</div><div class="label">Projects Completed</div></div>
         <div class="stat-card"><div class="number">2</div><div class="label">Publications</div></div>
         <div class="stat-card"><div class="number">4</div><div class="label">Certificates</div></div>
-        <div class="stat-card"><div class="number">&lt;4</div><div class="label">Languages</div></div>
+        <div class="stat-card"><div class="number">4</div><div class="label">Languages</div></div>
       </div>
     </div>
   </section><div class="divider"></div>
@@ -448,6 +448,30 @@ function initCols() {
   for (let i = 0; i < n; i++) cols.push(makecol(i, fs));
 }
 
+// ── OUTSIDE draw() — declared once, persists across frames ──
+const COLOR_PALETTE = [
+  {r: 47,  g: 128, b: 237},  // blue (original)
+  {r: 0,   g: 255, b: 128},  // matrix green
+  {r: 180, g: 60,  b: 255},  // purple
+  {r: 255, g: 80,  b: 80},   // red
+  {r: 255, g: 160, b: 0},    // amber
+];
+
+const COLOR_INTERVAL_MS   = 8000;
+const COLOR_TRANSITION_MS = 2000;
+let currentColorIndex     = 0;
+let nextColorIndex        = 1;
+let colorTransitionStart  = 0;
+
+function lerpColor(a, b, t) {
+  return {
+    r: Math.round(a.r + (b.r - a.r) * t),
+    g: Math.round(a.g + (b.g - a.g) * t),
+    b: Math.round(a.b + (b.b - a.b) * t),
+  };
+}
+
+// ── draw() — only the logic that runs every frame ──
 let lastTime = 0;
 function draw(ts) {
   requestAnimationFrame(draw);
@@ -457,7 +481,16 @@ function draw(ts) {
   ctx.fillStyle = 'rgba(8,12,16,0.16)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const r = 47, g = 128, b = 237;
+  // Color cycling — reads/updates the variables declared above
+  if (colorTransitionStart === 0) colorTransitionStart = ts;
+  const elapsed = ts - colorTransitionStart;
+  if (elapsed > COLOR_INTERVAL_MS + COLOR_TRANSITION_MS) {
+    colorTransitionStart  = ts;
+    currentColorIndex     = nextColorIndex;
+    nextColorIndex        = (nextColorIndex + 1) % COLOR_PALETTE.length;
+  }
+  const t = Math.min(Math.max((elapsed - COLOR_INTERVAL_MS) / COLOR_TRANSITION_MS, 0), 1);
+  const {r, g, b} = lerpColor(COLOR_PALETTE[currentColorIndex], COLOR_PALETTE[nextColorIndex], t);
 
   cols.forEach(col => {
     col.y += col.speed;
@@ -486,21 +519,6 @@ window.addEventListener('resize', resize);
 resize();
 requestAnimationFrame(draw);
 setTimeout(() => canvas.classList.add('visible'), 400);
-
-// ════════════════════════════════════════════════
-// SENTIMENT PALETTES
-// ════════════════════════════════════════════════
-const SENTIMENTS = {
-  joyful:     {r:255,g:200,b:40,   fill:'#ffc828', pct:95, label:'JOYFUL'},
-  excited:    {r:86, g:204,b:242,  fill:'#56ccf2', pct:88, label:'EXCITED'},
-  calm:       {r:47, g:128,b:237,  fill:'#2f80ed', pct:62, label:'CALM'},
-  curious:    {r:70, g:210,b:170,  fill:'#46d2aa', pct:74, label:'CURIOUS'},
-  nostalgic:  {r:180,g:110,b:245,  fill:'#b46ef5', pct:55, label:'NOSTALGIC'},
-  melancholy: {r:80, g:100,b:185,  fill:'#5064b9', pct:36, label:'MELANCHOLY'},
-  anxious:    {r:245,g:145,b:30,   fill:'#f5911e', pct:68, label:'ANXIOUS'},
-  angry:      {r:230,g:50, b:50,   fill:'#e63232', pct:88, label:'ANGRY'},
-  neutral:    {r:47, g:128,b:237,  fill:'#2f80ed', pct:50, label:'NEUTRAL'},
-};
 
 // ════════════════════════════════════════════════
 // SCROLL FADE-IN
