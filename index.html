@@ -368,7 +368,6 @@ const WORDS  = ['loss','relu','CNN','RNN','SGD','AUC','ROC','MAE','MSE','lr',
                 'null','true','false','0x','log','exp','argmax','softmax'];
 
 let cols      = [];
-let rainColor = { r:47, g:128, b:237 }; // default blue — changed by sentiment
 
 function resize() {
   canvas.width  = window.innerWidth;
@@ -405,7 +404,7 @@ function draw(ts) {
   ctx.fillStyle = 'rgba(8,12,16,0.16)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const {r,g,b} = rainColor;
+  const r = 47, g = 128, b = 237;
 
   cols.forEach(col => {
     col.y += col.speed;
@@ -449,81 +448,6 @@ const SENTIMENTS = {
   angry:      {r:230,g:50, b:50,   fill:'#e63232', pct:88, label:'ANGRY'},
   neutral:    {r:47, g:128,b:237,  fill:'#2f80ed', pct:50, label:'NEUTRAL'},
 };
-
-// ════════════════════════════════════════════════
-// SENTIMENT VISUALIZER — powered by Claude API
-// ════════════════════════════════════════════════
-const sentInput  = document.getElementById('sentimentInput');
-const sentBtn    = document.getElementById('sentimentSubmit');
-const sentResult = document.getElementById('sentimentResult');
-const sentFill   = document.getElementById('sentimentBarFill');
-const sentMood   = document.getElementById('sentimentMood');
-const sentThink  = document.getElementById('sentimentThinking');
-
-function applySentiment(key) {
-  const s = SENTIMENTS[key] || SENTIMENTS.neutral;
-  // Shift rain color smoothly
-  const start = {...rainColor};
-  const end   = {r:s.r, g:s.g, b:s.b};
-  let t = 0;
-  const step = () => {
-    t += 0.04;
-    if (t >= 1) { rainColor = end; return; }
-    rainColor = {
-      r: Math.round(start.r + (end.r - start.r) * t),
-      g: Math.round(start.g + (end.g - start.g) * t),
-      b: Math.round(start.b + (end.b - start.b) * t),
-    };
-    requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-
-  sentFill.style.background = s.fill;
-  sentFill.style.boxShadow  = `0 0 12px ${s.fill}90`;
-  sentFill.style.width      = s.pct + '%';
-  sentMood.style.color      = s.fill;
-  sentMood.textContent      = s.label;
-  sentResult.classList.add('show');
-}
-
-async function runSentiment() {
-  const text = sentInput.value.trim();
-  if (!text) return;
-
-  sentBtn.disabled    = true;
-  sentBtn.textContent = '...';
-  sentThink.classList.add('show');
-  sentResult.classList.remove('show');
-
-  try {
-    const res  = await fetch('https://fancy-union-6b97.nicolasmir20.workers.dev/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: `You are an emotion classifier. The user sends a short text.
-Classify it into exactly ONE of: joyful, excited, calm, curious, nostalgic, melancholy, anxious, angry, neutral
-Reply with ONLY the single lowercase word — no punctuation, no explanation, nothing else.
-If ambiguous pick closest. If no detectable emotion: neutral`,
-        messages: [{role:'user', content: text}]
-      })
-    });
-    const data = await res.json();
-    const raw  = (data.content?.[0]?.text || 'neutral').trim().toLowerCase().replace(/[^a-z]/g,'');
-    applySentiment(SENTIMENTS[raw] ? raw : 'neutral');
-  } catch(e) {
-    console.warn('Sentiment error:', e);
-    applySentiment('neutral');
-  } finally {
-    sentBtn.disabled    = false;
-    sentBtn.textContent = 'ANALYSE';
-    sentThink.classList.remove('show');
-  }
-}
-
-sentBtn.addEventListener('click', runSentiment);
-sentInput.addEventListener('keydown', e => { if (e.key === 'Enter') runSentiment(); });
 
 // ════════════════════════════════════════════════
 // SCROLL FADE-IN
