@@ -89,54 +89,7 @@
     .btn-primary:hover { background: var(--accent2); box-shadow: 0 0 30px rgba(86,204,242,0.5); }
     .btn-outline { background: transparent; color: var(--accent2); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ── SENTIMENT WIDGET ── */
-    .sentiment-widget { margin-top: 3rem; max-width: 540px; opacity: 0; animation: fadeUp 0.7s 1.4s forwards; }
-    .sentiment-label {
-      font-family: var(--mono); font-size: 0.7rem; color: var(--muted);
-      letter-spacing: 0.16em; text-transform: uppercase;
-      margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.6rem;
-    }
-    .sentiment-label::before {
-      content: ''; display: inline-block; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--accent2); animation: pulse-dot 2s infinite;
-    }
-    .sentiment-input-wrap { position: relative; display: flex; align-items: center; }
-    #sentimentInput {
-      width: 100%; background: rgba(13,19,24,0.88);
-      border: 1px solid var(--border); border-radius: 2px;
-      color: var(--text); font-family: var(--mono); font-size: 0.85rem;
-      padding: 0.85rem 5.5rem 0.85rem 1rem;
-      outline: none; transition: border-color 0.5s, box-shadow 0.5s;
-      backdrop-filter: blur(8px);
-    }
-    #sentimentInput::placeholder { color: var(--muted); }
-    #sentimentInput:focus { border-color: var(--accent2); box-shadow: 0 0 18px rgba(86,204,242,0.18); }
-    .sentiment-submit {
-      position: absolute; right: 0.6rem;
-      font-family: var(--mono); font-size: 0.7rem; color: var(--accent2);
-      background: rgba(47,128,237,0.1); border: 1px solid var(--border);
-      border-radius: 2px; padding: 0.35rem 0.7rem;
-      cursor: pointer; letter-spacing: 0.08em; transition: background 0.2s, border-color 0.2s;
-    }
-    .sentiment-submit:hover { background: rgba(47,128,237,0.25); border-color: var(--accent); }
-    .sentiment-submit:disabled { opacity: 0.5; cursor: default; }
-
-    .sentiment-thinking {
-      font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
-      display: none; align-items: center; gap: 0.5rem; margin-top: 0.6rem;
-    }
-    .sentiment-thinking.show { display: flex; }
-    .thinking-dots span { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--muted); animation: dot-bounce 1.2s infinite; }
-    .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-    .sentiment-result { margin-top: 0.8rem; display: flex; align-items: center; gap: 1rem; opacity: 0; transition: opacity 0.4s; }
-    .sentiment-result.show { opacity: 1; }
-    .sentiment-bar-track { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .sentiment-bar-fill  { height: 100%; border-radius: 2px; width: 0%; transition: width 0.9s cubic-bezier(0.22,1,0.36,1), background 0.8s, box-shadow 0.8s; }
-    .sentiment-mood { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.6s; min-width: 100px; text-align: right; }
-
+    
     /* ── DIVIDER ── */
     .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); position: relative; z-index: 2; }
 
