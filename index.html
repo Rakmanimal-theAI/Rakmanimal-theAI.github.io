@@ -229,6 +229,303 @@
       }
     }
 
+    /* ── CONTINUOUS LEARNING STYLES ── */
+    .learning-philosophy {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      background: linear-gradient(135deg, var(--panel) 0%, rgba(17,24,32,0.8) 100%);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .philosophy-text {
+      flex: 2;
+      position: relative;
+    }
+    
+    .chess-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .philosophy-text h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--heading);
+    }
+    
+    .philosophy-text p {
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    .chess-stats {
+      flex: 1;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-around;
+      text-align: center;
+    }
+    
+    .chess-stat {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stat-number {
+      font-family: var(--mono);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent2);
+    }
+    
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .learning-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    
+    .learning-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .platform-header {
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .platform-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .platform-header h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .platform-focus {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .progress-section {
+      margin: 1rem 0;
+    }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin: 0.8rem 0 0.3rem;
+    }
+    
+    .progress-header:first-of-type {
+      margin-top: 0;
+    }
+    
+    .progress-count {
+      font-family: var(--mono);
+      color: var(--accent2);
+    }
+    
+    .progress-bar-container {
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+      height: 6px;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: var(--accent2);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+    
+    .progress-bar-medium {
+      background: #ffb74d;
+    }
+    
+    .progress-bar-hard {
+      background: #ef5350;
+    }
+    
+    .progress-bar-datacom {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+    }
+    
+    .milestone-badge {
+      font-size: 0.7rem;
+      color: var(--accent2);
+      margin-top: 0.8rem;
+      text-align: center;
+      font-family: var(--mono);
+    }
+    
+    .newsletter-highlight {
+      background: rgba(47,128,237,0.08);
+      border-left: 3px solid var(--accent2);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 2px;
+    }
+    
+    .highlight-badge {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-title {
+      font-weight: 600;
+      color: var(--heading);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-takeaway {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    
+    .newsletter-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .simulation-status {
+      margin-bottom: 1rem;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      font-family: var(--mono);
+      margin-bottom: 0.8rem;
+    }
+    
+    .status-badge.in-progress {
+      background: rgba(255, 183, 77, 0.2);
+      color: #ffb74d;
+      border: 1px solid #ffb74d;
+    }
+    
+    .status-badge.completed {
+      background: rgba(86, 204, 242, 0.2);
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+    }
+    
+    .simulation-modules {
+      margin-top: 1rem;
+    }
+    
+    .module-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    
+    .module-name {
+      color: var(--text);
+    }
+    
+    .module-status {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+    
+    .module-status.completed {
+      color: var(--accent2);
+    }
+    
+    .platform-footer {
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+    }
+    
+    .update-note {
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+    
+    .platform-link {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .platform-link:hover {
+      color: #fff;
+    }
+    
+    @media (max-width: 768px) {
+      .learning-philosophy {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .chess-stats {
+        width: 100%;
+      }
+      
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ── DOCS / CERTS ── */
     .doc-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.2rem; margin-top: 2.5rem; }
     .doc-card { background: var(--panel); border: 1px solid var(--border); padding: 1.8rem; border-radius: 2px; display: flex; flex-direction: column; gap: 0.8rem; transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; }
@@ -394,6 +691,165 @@
       <div class="skill-category"><h3>Dev Tools</h3><div class="skill-tags"><span class="tag">Version Control</span><span class="tag">CI/CD</span><span class="tag">Excel</span></div></div>
     </div>
   </section><div class="divider"></div>
+
+  <!-- CONTINUOUS LEARNING & GROWTH -->
+  <section id="learning">
+    <p class="section-label fade-in">Continuous Learning</p>
+    <h2 class="section-heading fade-in">How I Stay Sharp</h2>
+    
+    <!-- Learning Philosophy (with Chess) -->
+    <div class="learning-philosophy fade-in">
+      <div class="philosophy-text">
+        <div class="chess-icon">♟️</div>
+        <h3>My Learning Engine: Chess Discipline + Data Curiosity</h3>
+        <p>Chess taught me <strong>pattern recognition, strategic thinking under pressure, and learning from losses</strong> — the same skills that make a great data professional. I treat every failed model, every bug, and every performance bottleneck as a puzzle to solve, not a problem to fear.</p>
+        <p>My method: <strong>build → measure → learn → repeat</strong>. I don't just complete tutorials. I build projects, run benchmarks, document trade-offs, and share findings. This section shows how I actively level up every week.</p>
+      </div>
+      <div class="chess-stats">
+        <div class="chess-stat">
+          <span class="stat-number">2000</span>
+          <span class="stat-label">FIDE Rating</span>
+        </div>
+        <div class="chess-stat">
+          <span class="stat-number">13 yrs</span>
+          <span class="stat-label">Competitive Play</span>
+        </div>
+        <div class="chess-stat">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Patterns Analyzed</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Learning Platforms Grid -->
+    <div class="learning-grid fade-in">
+      
+      <!-- DataLemur Card -->
+      <div class="learning-card">
+        <div class="platform-header">
+          <div class="platform-icon">🐒</div>
+          <h3>DataLemur</h3>
+          <span class="platform-focus">SQL Interview Prep</span>
+        </div>
+        <div class="progress-section">
+          <div class="progress-header">
+            <span>Easy</span>
+            <span class="progress-count" id="datalemur-easy">0/0</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="datalemur-easy-bar" style="width: 0%"></div>
+          </div>
+          
+          <div class="progress-header">
+            <span>Medium</span>
+            <span class="progress-count" id="datalemur-medium">0/0</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar progress-bar-medium" id="datalemur-medium-bar" style="width: 0%"></div>
+          </div>
+          
+          <div class="progress-header">
+            <span>Hard</span>
+            <span class="progress-count" id="datalemur-hard">0/0</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar progress-bar-hard" id="datalemur-hard-bar" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="platform-footer">
+          <span class="update-note">📊 Updated weekly</span>
+          <a href="https://datalemur.com/user/rakmanimal" class="platform-link" target="_blank">View Profile →</a>
+        </div>
+      </div>
+  
+      <!-- TLDR Newsletter Card -->
+        <div class="learning-card">
+          <div class="platform-header">
+            <div class="platform-icon">📰</div>
+            <h3>TLDR AI & Data</h3>
+            <span class="platform-focus">Daily Tech Intelligence</span>
+          </div>
+          <div class="newsletter-highlight">
+            <div class="highlight-badge">🔥 Recent Highlight</div>
+            <p class="highlight-title" id="tldr-title">RAG 2.0: Context-Aware Retrieval Cuts Hallucinations by 40%</p>
+            <p class="highlight-takeaway" id="tldr-takeaway">My take: I'm experimenting with this in my AI Agents project — adding a relevance scoring step before feeding context to LLMs.</p>
+            <a href="https://tldr.tech/ai" class="platform-link" target="_blank">Read Today's Issue →</a>
+          </div>
+          <div class="newsletter-stats">
+            <span>📬 Daily since Jan 2025</span>
+            <span>⚡ 5 min/day</span>
+          </div>
+        </div>
+    
+        <!-- Datacom Job Simulation Card (NEW) -->
+        <div class="learning-card">
+          <div class="platform-header">
+            <div class="platform-icon">💼</div>
+            <h3>Datacom</h3>
+            <span class="platform-focus">Job Simulation Track</span>
+          </div>
+          <div class="progress-section">
+            <div class="simulation-status">
+              <div class="status-badge in-progress">🚀 In Progress</div>
+              <div class="progress-header">
+                <span>Overall Progress</span>
+                <span class="progress-count" id="datacom-progress">0%</span>
+              </div>
+              <div class="progress-bar-container">
+                <div class="progress-bar progress-bar-datacom" id="datacom-bar" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="simulation-modules">
+              <div class="module-item">
+                <span class="module-name">📊 Data Analysis Challenge</span>
+                <span class="module-status" id="datacom-module1">Pending</span>
+              </div>
+              <div class="module-item">
+                <span class="module-name">🗄️ SQL & Databases</span>
+                <span class="module-status" id="datacom-module2">Pending</span>
+              </div>
+              <div class="module-item">
+                <span class="module-name">📈 Dashboard Creation</span>
+                <span class="module-status" id="datacom-module3">Pending</span>
+              </div>
+              <div class="module-item">
+                <span class="module-name">🎤 Stakeholder Presentation</span>
+                <span class="module-status" id="datacom-module4">Pending</span>
+              </div>
+            </div>
+          </div>
+          <div class="platform-footer">
+            <span class="update-note">🎯 Active application: Datacom</span>
+            <a href="#" class="platform-link" onclick="return false;">Show Interest →</a>
+          </div>
+        </div>
+    
+        <!-- LogicExcel Card (original) -->
+        <div class="learning-card">
+          <div class="platform-header">
+            <div class="platform-icon">📊</div>
+            <h3>LogicExcel</h3>
+            <span class="platform-focus">Advanced Excel Logic</span>
+          </div>
+          <div class="progress-section">
+            <div class="progress-header">
+              <span>Exercises Completed</span>
+              <span class="progress-count" id="logicexcel-count">0/0</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="logicexcel-bar" style="width: 0%"></div>
+            </div>
+            <div class="milestone-badge" id="logicexcel-next">🏆 Next: Index-Match Mastery Pack</div>
+          </div>
+          <div class="platform-footer">
+            <span class="update-note">📈 +5 exercises this month</span>
+            <a href="#" class="platform-link" onclick="return false;">Track Progress →</a>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    <div class="divider"></div>
   
   <!-- PROJECTS -->
   <section id="projects">
