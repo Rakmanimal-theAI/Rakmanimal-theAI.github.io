@@ -648,7 +648,7 @@
     <p class="hero-tag">[ PORTFOLIO ]</p>
     <h1 class="hero-name">Nicolas<br>Mir<span class="accent">.</span></h1>
     <p class="hero-title">// Data Science Graduate &amp; Software Engineer</p>
-    <p class="hero-desc">Welcome to my portfolio ! Here I showcase who I am and what I've worked on.</p>
+    <p class="hero-desc">Kia ora! This page is more than a portfolio to me: Here I showcase how I think, my methods of learning and how I position myself in Data and AI.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -662,33 +662,113 @@
   <section id="about">
     <p class="section-label fade-in">About</p>
     <h2 class="section-heading fade-in">Who I Am</h2>
+    
     <div class="about-grid fade-in">
-      <div class="about-text">
-        <p>As a French Data Science and Software Engineer recent graduate, I am now focused on developing my expertise in what drives me the most: Data Engineering and AI.</p>
-        <p>My strengths: my curiosity for learning skills in depth, my international background (lived in 3 countries and speak 4 languages) and my ability to get open-minded conversation with people from any field.</p>
-        <p>One key achievement in my life was the publication of a peer-reviewed paper "Hierarchical Clustering for Property Graph Schema Discovery" (EDBT 2022).</p>
-        <a href="#cv" class="btn btn-outline" style="margin-top:1rem;display:inline-block;">View Full CV</a>
+      <!-- Left Column: Q&A with Dropdowns -->
+      <div class="about-qa">
+        
+        <!-- Q1: Who am I professionally? -->
+        <div class="qa-item">
+          <div class="qa-question" onclick="toggleQA(this)">
+            <span class="qa-icon">▼</span>
+            <span class="qa-question-text">🧑‍💻 Who am I professionally?</span>
+          </div>
+          <div class="qa-answer">
+            <p>A French Data Science and Software Engineering graduate (M.S., University of Auckland, 2025). I build things that turn raw data into decisions — from cloud ELT pipelines to generative AI models. My sweet spot is where data engineering meets machine learning, and I care deeply about shipping code that actually helps people.</p>
+          </div>
+        </div>
+
+        <!-- Q2: What am I most proud of? -->
+        <div class="qa-item">
+          <div class="qa-question" onclick="toggleQA(this)">
+            <span class="qa-icon">▼</span>
+            <span class="qa-question-text">🏆 What am I most proud of?</span>
+          </div>
+          <div class="qa-answer">
+            <p>Publishing a peer-reviewed paper as an undergraduate: <strong>"Hierarchical Clustering for Property Graph Schema Discovery"</strong> (EDBT 2022). That project taught me that real research is messy, collaboration is hard, and finishing what you start is what separates dreamers from doers.</p>
+            <div class="qa-paper-badge">
+              <span class="badge">🏛️ EDBT 2022</span>
+              <span class="badge">📄 Peer-Reviewed</span>
+              <span class="badge">🔬 LIRIS Lab</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3: Who am I outside of tech? -->
+        <div class="qa-item">
+          <div class="qa-question" onclick="toggleQA(this)">
+            <span class="qa-icon">▼</span>
+            <span class="qa-question-text">🍞 Who am I outside of tech?</span>
+          </div>
+          <div class="qa-answer">
+            <p>A baker, a runner, and a squash player. Baking taught me precision and patience — you can't rush a sourdough. Running and squash keep me grounded, competitive, and remind me that progress is incremental. I bring the same discipline to my code.</p>
+            <div class="baking-showcase">
+              <img id="bakingImage" class="baking-thumb" src="" alt="My baking creation" style="display: none;">
+              <button class="baking-btn" onclick="showBakingPhoto()">📸 Show my latest bake →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4: What drives me? -->
+        <div class="qa-item">
+          <div class="qa-question" onclick="toggleQA(this)">
+            <span class="qa-icon">▼</span>
+            <span class="qa-question-text">⚡ What drives me?</span>
+          </div>
+          <div class="qa-answer">
+            <p>The gap between a messy data problem and a clean, working solution. I love the <strong>hunt</strong> — whether it's debugging a Spark job at 2 AM or finding the right prompt to make an LLM behave. I believe the best data scientists are curious, stubborn, and generous with their knowledge.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="about-stats">
-        <div class="stat-card"><div class="number">5</div><div class="label">Projects Completed</div></div>
-        <div class="stat-card"><div class="number">2</div><div class="label">Publications</div></div>
-        <div class="stat-card"><div class="number">4</div><div class="label">Certificates</div></div>
-        <div class="stat-card"><div class="number">4</div><div class="label">Languages</div></div>
+
+      <!-- Right Column: Stats + Quick Facts -->
+      <div class="about-right">
+        <div class="about-stats">
+          <div class="stat-card"><div class="number">5</div><div class="label">Projects Completed</div></div>
+          <div class="stat-card"><div class="number">2</div><div class="label">Publications</div></div>
+          <div class="stat-card"><div class="number">4</div><div class="label">Certificates</div></div>
+          <div class="stat-card"><div class="number">4</div><div class="label">Languages</div></div>
+        </div>
+        
+        <!-- Quick Fun Facts -->
+        <div class="quick-facts">
+          <div class="fact-item">
+            <span class="fact-emoji">♟️</span>
+            <span class="fact-text">2000 FIDE Rating in Chess</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">🎹</span>
+            <span class="fact-text">13 years of piano (conservatory-trained)</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">🌍</span>
+            <span class="fact-text">Lived in 4 countries (France, NZ, Russia, Germany)</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-emoji">🍞</span>
+            <span class="fact-text">Sourdough baker & pastry enthusiast</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section><div class="divider"></div>
+    
+    <div class="about-footer">
+      <a href="#cv" class="btn btn-outline">📄 View Full CV</a>
+      <a href="#contact" class="btn btn-primary">✉️ Get in Touch</a>
+    </div>
+  </section>
+  <div class="divider"></div>
   
   <!-- SKILLS -->
   <section id="skills">
-    <p class="section-label fade-in">Skills</p>
+    <p class="section-label fade-in">Core Skills</p>
     <h2 class="section-heading fade-in">What I Work With</h2>
     <div class="skills-grid fade-in">
-      <div class="skill-category"><h3>Core Languages</h3><div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Shell Scripting</span><span class="tag">SQL</span><span class="tag">Java</span></div></div>
-      <div class="skill-category"><h3>Databases</h3><div class="skill-tags"><span class="tag">SQL (Window functions, CTEs, JOINs, UNPIVOT, data integrity)</span><span class="tag">NoSQL (Neo4j)</span><span class="tag">dbt</span><span class="tag">ETL/ELT pipelines</span></div></div>
-      <div class="skill-category"><h3>Data & ML Libraries</h3><div class="skill-tags"><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">PyTorch</span><span class="tag">Tensorflow</span><span class="tag">NLTK</span></div></div>
-      <div class="skill-category"><h3>Data Visualisation</h3><div class="skill-tags"><span class="tag">Power BI (DAX)</span><span class="tag">Matplotlib</span><span class="tag">ggplot2 (R)</span><span class="tag">Streamlit</span></div></div>
-      <div class="skill-category"><h3>Cloud & Big Data</h3><div class="skill-tags"><span class="tag">Microsoft Azure (DP-900 certified)</span><span class="tag">Snowflake</span><span class="tag">Exposure to AWS</span><span class="tag">Spark, Hadoop</span></div></div>
-      <div class="skill-category"><h3>Dev Tools</h3><div class="skill-tags"><span class="tag">Version Control</span><span class="tag">CI/CD</span><span class="tag">Excel</span></div></div>
+      <div class="skill-category"><h3>AI & ML</h3><div class="skill-tags"><span class="tag">LLMs</span><span class="tag">prompt engineering</span><span class="tag">fine-tuning (QLoRA)</span><span class="tag">RAG & AI Agents</span><span class="tag">HuggingFace</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">PyTorch</span><span class="tag">Tensorflow</span><span class="tag">NLTK</span></div></div>
+      <div class="skill-category"><h3>Languages & Data</h3><div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Shell Scripting</span><span class="tag">SQL (Window functions, CTEs, JOINs, UNPIVOT, data integrity)</span><span class="tag">Java</span><span class="tag">Excel(VLOOKUP, PIVOT, etc.)</span></div></div>
+      <div class="skill-category"><h3>Data Visualisation</h3><div class="skill-tags"><span class="tag">Power BI (DAX)</span><span class="tag">Matplotlib</span><span class="tag">ggplot2 (R)</span><span class="tag">Streamlit</span><span class="tag">Translating analytical findings to clear outputs</span></div></div>
+      <div class="skill-category"><h3>Cloud & Platforms</h3><div class="skill-tags"><span class="tag">Microsoft Azure (DP-900 certified)</span><span class="tag">Snowflake</span><span class="tag">Exposure to AWS</span><span class="tag">GitHub</span><span class="tag">CI/CD</span><span class="tag">dbt</span><span class="tag">REST APIs</span><span class="tag">ELT/ETL</span></div></div>
     </div>
   </section><div class="divider"></div>
 
@@ -1236,6 +1316,66 @@ volSlider.addEventListener('input',()=>{
 audio.addEventListener('ended',()=>setPlaying(false));
 audio.addEventListener('pause',()=>setPlaying(false));
 audio.addEventListener('play',()=>setPlaying(true));
+
+// ── ABOUT SECTION: DROPDOWN TOGGLE ──
+function toggleQA(element) {
+  const qaItem = element.closest('.qa-item');
+  const answer = qaItem.querySelector('.qa-answer');
+  const icon = qaItem.querySelector('.qa-icon');
+  
+  // Close all other open QA items (optional: comment out if you want multiple open)
+  document.querySelectorAll('.qa-item').forEach(item => {
+    if(item !== qaItem) {
+      const otherAnswer = item.querySelector('.qa-answer');
+      const otherIcon = item.querySelector('.qa-icon');
+      if(otherAnswer && otherAnswer.style.display === 'block') {
+        otherAnswer.style.display = 'none';
+        otherIcon.style.transform = 'rotate(0deg)';
+      }
+    }
+  });
+  
+  // Toggle current
+  if(answer.style.display === 'block') {
+    answer.style.display = 'none';
+    icon.style.transform = 'rotate(0deg)';
+  } else {
+    answer.style.display = 'block';
+    icon.style.transform = 'rotate(90deg)';
+  }
+}
+
+// ── BAKING PHOTO FUNCTION ──
+// TO USE: Replace the image path with your actual baking photo URL
+// Option 1: Upload a photo to your GitHub repo (e.g., images/baking.jpg)
+// Option 2: Use a direct image link from Google Drive, Imgur, etc.
+
+function showBakingPhoto() {
+  const img = document.getElementById('bakingImage');
+  const btn = document.querySelector('.baking-btn');
+  
+  // 🔧 IMPORTANT: Change this URL to your actual baking photo
+  // Examples:
+  // - GitHub: "images/baking.jpg" (create an 'images' folder in your repo)
+  // - Imgur: "https://i.imgur.com/your-image-id.jpg"
+  const bakingPhotoUrl = "baking.jpg";
+  
+  if(img.style.display === 'none' || !img.style.display) {
+    img.src = bakingPhotoUrl;
+    img.style.display = 'block';
+    btn.textContent = '📸 Hide photo';
+  } else {
+    img.style.display = 'none';
+    btn.textContent = '📸 Show my latest bake →';
+  }
+}
+
+// Initialize all QA answers to be hidden on page load
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.qa-answer').forEach(answer => {
+    answer.style.display = 'none';
+  });
+});
 </script>
 </body>
 </html>
