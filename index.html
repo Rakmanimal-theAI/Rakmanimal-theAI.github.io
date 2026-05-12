@@ -123,6 +123,112 @@
     .project-links a { font-family: var(--mono); font-size: 0.75rem; color: var(--accent2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
     .project-links a:hover { color: #fff; }
 
+    /* ── EXPERIENCE ── */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    
+    .experience-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    
+    .experience-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+    
+    .experience-number {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    
+    .experience-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    
+    .experience-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+      color: var(--heading);
+    }
+    
+    .experience-company {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+    
+    .experience-list {
+      margin: 1rem 0 1.2rem;
+      padding-left: 1.2rem;
+    }
+    
+    .experience-list li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    .experience-list li::marker {
+      color: var(--accent);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .experience-header {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      
+      .experience-card {
+        padding: 1.3rem;
+      }
+      
+      .experience-card h3 {
+        font-size: 1rem;
+      }
+    }
+
     /* ── DOCS / CERTS ── */
     .doc-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.2rem; margin-top: 2.5rem; }
     .doc-card { background: var(--panel); border: 1px solid var(--border); padding: 1.8rem; border-radius: 2px; display: flex; flex-direction: column; gap: 0.8rem; transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; }
@@ -347,6 +453,115 @@
 
     </div>
   </section><div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label fade-in">Experience</p>
+  <h2 class="section-heading fade-in">Where I've Worked</h2>
+  <div class="experience-grid fade-in">
+
+    <div class="experience-card">
+      <div class="experience-header">
+        <div class="experience-number">01</div>
+        <div class="experience-date">Sep 2023 — Feb 2024</div>
+      </div>
+      <h3>API Data Developer</h3>
+      <div class="experience-company">Altermaker · Troyes, France</div>
+      <ul class="experience-list">
+        <li>Designed a 30-table MySQL relational database and REST API, contributing to a client-facing product used by 1,000+ users.</li>
+        <li>Gained end-to-end ownership across database design, API development, and data integration — making decisions that directly affect product users.</li>
+        <li>Worked directly with stakeholders to translate requirements into technical deliverables.</li>
+      </ul>
+      <div class="skill-tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Python</span>
+        <span class="tag">Stakeholder Management</span>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-header">
+        <div class="experience-number">02</div>
+        <div class="experience-date">May 2022 — Nov 2022</div>
+      </div>
+      <h3>Software Tester & Developer</h3>
+      <div class="experience-company">Stafiz · Lyon, France</div>
+      <ul class="experience-list">
+        <li>Built automated test suites (Laravel Dusk) to protect critical production features.</li>
+        <li>Worked with REST APIs and AWS infrastructure in a professional CI/CD environment.</li>
+        <li>Developed the habit of thinking about what 'done' really means, and what breaks when you assume it.</li>
+      </ul>
+      <div class="skill-tags">
+        <span class="tag">Laravel Dusk</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">AWS</span>
+        <span class="tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-header">
+        <div class="experience-number">03</div>
+        <div class="experience-date">May 2021 — Nov 2021</div>
+      </div>
+      <h3>Research Intern</h3>
+      <div class="experience-company">LIRIS Laboratory · Lyon, France</div>
+      <ul class="experience-list">
+        <li>Designed and implemented a GMM-based statistical method for automated graph schema discovery in Big Data, outperforming previous benchmarks in both speed and precision (Python, Neo4j).</li>
+        <li>Co-authored a peer-reviewed publication "Hierarchical Clustering for Property Graph Schema Discovery" demonstrating the ability to carry a project from hypothesis to written, reproducible output.</li>
+      </ul>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Neo4j</span>
+        <span class="tag">GMM</span>
+        <span class="tag">Research</span>
+        <span class="tag">Peer-reviewed Publication</span>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-header">
+        <div class="experience-number">04</div>
+        <div class="experience-date">Summer 2019</div>
+      </div>
+      <h3>Database Designer & Extractor</h3>
+      <div class="experience-company">Altermaker · Troyes, France</div>
+      <ul class="experience-list">
+        <li>Designed and implemented new databases (MySQL) and programs (PHP, Python) achieving automated transfers from public files to software data on updates.</li>
+        <li>Early exposure to ETL concepts and production data flows.</li>
+      </ul>
+      <div class="skill-tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">PHP</span>
+        <span class="tag">Python</span>
+        <span class="tag">ETL</span>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-header">
+        <div class="experience-number">05</div>
+        <div class="experience-date">2026-Today</div>
+      </div>
+      <h3>Team Member & Customer Service</h3>
+      <div class="experience-company">McDonald's · France</div>
+      <ul class="experience-list">
+        <li>Collaborated in a fast-paced team to maintain operational efficiency during peak hours, serving 200+ customers per shift.</li>
+        <li>Developed resilience, problem-solving, and communication skills in high-pressure situations.</li>
+        <li>Consistently delivered accurate order fulfillment and positive customer experiences, contributing to team KPIs.</li>
+      </ul>
+      <div class="skill-tags">
+        <span class="tag">Team Collaboration</span>
+        <span class="tag">Customer Service</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Time Pressure</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<div class="divider"></div>
   
   <!-- CV -->
   <section id="cv">
